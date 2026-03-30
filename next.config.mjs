@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-
 const nextConfig = {
   /* config options here */
     transpilePackages: ['three'],

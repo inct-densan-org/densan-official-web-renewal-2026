@@ -13,7 +13,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import {fadeInVariants} from "@/utils/motionVariants";
-import {basePath} from "../../../next.config";
+import {basePath} from "@/basePath";
 
 
 export default function GroupsSection() {

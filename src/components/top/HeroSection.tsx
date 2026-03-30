@@ -5,7 +5,7 @@ import {Canvas, useFrame, useThree} from '@react-three/fiber';
 import {useTexture} from '@react-three/drei';
 import * as THREE from 'three';
 import {TitleLogo} from "@/components/top/TitleLogo";
-import {basePath} from "../../../next.config";
+import {basePath} from "@/basePath";
 
 // 頂点シェーダー（標準的な処理のみ。一切歪ませない）
 const vertexShader = `

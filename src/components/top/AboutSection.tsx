@@ -4,7 +4,7 @@ import {notoSansJP, notoSerifJP} from "@/utils/fonts";
 import Link from "next/link";
 import { motion } from "motion/react";
 import {fadeInVariants} from "@/utils/motionVariants";
-import {basePath} from "../../../next.config";
+import {basePath} from "@/basePath";
 
 
 export default function AboutSection() {

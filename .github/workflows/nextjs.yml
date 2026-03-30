@@ -44,6 +44,7 @@ jobs:
         uses: actions/configure-pages@v4
         with:
           static_site_generator: next
+          generator_config_file: next.config.mjs
 
       # Next.jsのビルドキャッシュを復元 (2回目以降のビルドが高速化されます)
       - name: Restore cache

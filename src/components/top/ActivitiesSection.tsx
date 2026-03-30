@@ -6,7 +6,7 @@ import { notoSansJP, orbitron } from "@/utils/fonts";
 import { activitiesData } from "../../../public/config";
 import {motion} from "motion/react";
 import {fadeInVariants} from "@/utils/motionVariants";
-import {basePath} from "../../../next.config";
+import {basePath} from "@/basePath";
 
 export default function ActivitiesSection() {
     // 全て表示するかどうかの状態管理（初期値は false = 直近2件のみ表示）

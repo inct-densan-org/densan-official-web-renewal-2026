@@ -8,7 +8,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeSanitize from "rehype-sanitize";
 import Image from "next/image";
 import remarkGfm from "remark-gfm";
-import {basePath} from "../../../next.config";
+import {basePath} from "@/basePath";
 
 
 // --- アニメーション設定 ---
