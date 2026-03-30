@@ -63,11 +63,11 @@ jobs:
       - name: Build with Next.js
         run: pnpm run build
 
-      # 生成された out ディレクトリをアップロード
+      # 生成された export ディレクトリをアップロード
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./export
 
   # デプロイジョブ
   deploy:
