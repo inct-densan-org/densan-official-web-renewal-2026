@@ -63,6 +63,9 @@ jobs:
       # 静的エクスポートの実行
       - name: Build with Next.js
         run: pnpm run build
+        env:
+          # ここにリポジトリ名を指定します
+          NEXT_PUBLIC_BASE_PATH: '/densan-official-web-renewal-2026'
 
       # 生成された out ディレクトリをアップロード
       - name: Upload artifact
