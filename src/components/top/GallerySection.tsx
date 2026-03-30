@@ -8,6 +8,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeSanitize from "rehype-sanitize";
 import Image from "next/image";
 import remarkGfm from "remark-gfm";
+import basePath from "../../../next.config.mjs";
 
 
 // --- アニメーション設定 ---
@@ -29,7 +30,7 @@ function WorkCard({work}: { work: { id: string; title: string; summary: string, 
         // public/works/[id]/[summary] からMarkdownをフェッチ
         const fetchMarkdown = async () => {
             try {
-                const res = await fetch(`/gallery/${work.id}/${work.summary}`);
+                const res = await fetch(`${basePath}/gallery/${work.id}/${work.summary}`);
                 if (!res.ok) throw new Error("Not Found");
                 const text = await res.text();
                 setSummary(text);
@@ -38,7 +39,7 @@ function WorkCard({work}: { work: { id: string; title: string; summary: string, 
             }
 
             try {
-                const res = await fetch(`/gallery/${work.id}/${work.content}`);
+                const res = await fetch(`${basePath}/gallery/${work.id}/${work.content}`);
                 if (!res.ok) throw new Error("Not Found");
                 const text = await res.text();
                 setContent(text);
@@ -69,7 +70,7 @@ function WorkCard({work}: { work: { id: string; title: string; summary: string, 
 
                             // "http" や "/" で始まらない相対パスなら、フォルダパスを付与
                             const isAbsolute = src.toString().startsWith("http") || src.toString().startsWith("/");
-                            const finalSrc = isAbsolute ? src : `/gallery/${work.id}/${src}`;
+                            const finalSrc = isAbsolute ? src : `${basePath}/gallery/${work.id}/${src}`;
 
                             // eslint-disable-next-line @next/next/no-img-element
                             return <img src={finalSrc} alt={alt || ""} {...props} />;
@@ -94,7 +95,7 @@ function WorkCard({work}: { work: { id: string; title: string; summary: string, 
 
                                     // "http" や "/" で始まらない相対パスなら、フォルダパスを付与
                                     const isAbsolute = src.toString().startsWith("http") || src.toString().startsWith("/");
-                                    const finalSrc = isAbsolute ? src : `/gallery/${work.id}/${src}`;
+                                    const finalSrc = isAbsolute ? src : `${basePath}/gallery/${work.id}/${src}`;
 
                                     // eslint-disable-next-line @next/next/no-img-element
                                     return <img src={finalSrc} alt={alt || ""} {...props} />;
@@ -125,7 +126,7 @@ export default function GallerySection() {
             <div
                 className="w-full bg-transparent py-16 md:py-32 flex flex-col items-center justify-center relative px-4 overflow-hidden">
                 <div className="absolute inset-0 z-0 bg-[#4a6b82]">
-                    <Image src={"/resource/gallery-banner.webp"} alt={"bg"} fill className={"object-cover opacity-50"}/>
+                    <Image src={`${basePath}/resource/gallery-banner.webp`} alt={"bg"} fill className={"object-cover opacity-50"}/>
                 </div>
                 <h2 className={`${notoSansJP.className} text-white text-4xl sm:text-5xl md:text-7xl font-bold tracking-[0.1em] md:tracking-[0.2em] z-10 text-center w-full`}
                     style={{WebkitTextStroke: "2px white", color: "transparent"}}

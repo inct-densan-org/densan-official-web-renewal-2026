@@ -13,6 +13,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import {fadeInVariants} from "@/utils/motionVariants";
+import basePath from "../../../next.config.mjs";
 
 
 export default function GroupsSection() {
@@ -29,7 +30,7 @@ export default function GroupsSection() {
             <div
                 className="w-full bg-[#6b8ca5] py-16 md:py-24 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20 mix-blend-overlay">
-                    <Image src="/resource/crystal-section.webp" alt="bg" fill className="object-cover"/>
+                    <Image src={`{${basePath}/resource/crystal-section.webp`} alt="bg" fill className="object-cover"/>
                 </div>
                 <h2 className={`${notoSansJP.className} text-white text-5xl md:text-7xl font-bold tracking-[0.2em] z-10`}
                     style={{
@@ -74,7 +75,7 @@ export default function GroupsSection() {
                                         {/* pathが存在する場合のみ画像を表示、空の場合は仮のテキストを表示 */}
                                         {group.path ? (
                                             <Image
-                                                src={`/group/${group.path}.webp`}
+                                                src={`${basePath}/group/${group.path}.webp`}
                                                 alt={`${group.title} group image`}
                                                 fill
                                                 className="object-cover transition-transform duration-700 hover:scale-105"

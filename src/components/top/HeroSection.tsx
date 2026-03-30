@@ -5,6 +5,7 @@ import {Canvas, useFrame, useThree} from '@react-three/fiber';
 import {useTexture} from '@react-three/drei';
 import * as THREE from 'three';
 import {TitleLogo} from "@/components/top/TitleLogo";
+import basePath from "../../../next.config.mjs";
 
 // 頂点シェーダー（標準的な処理のみ。一切歪ませない）
 const vertexShader = `
@@ -60,7 +61,7 @@ const fragmentShader = `
 
 function ShaderBackground() {
     // 画像パスは public/ に合わせたものを使用してください
-    const texture = useTexture('/resource/crystal-top.webp');
+    const texture = useTexture(`${basePath}/resource/crystal-top.webp`);
     const {size, viewport} = useThree();
     const materialRef = useRef<THREE.ShaderMaterial>(null);
 

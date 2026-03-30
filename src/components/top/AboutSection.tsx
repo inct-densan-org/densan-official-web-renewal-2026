@@ -4,6 +4,7 @@ import {notoSansJP, notoSerifJP} from "@/utils/fonts";
 import Link from "next/link";
 import { motion } from "motion/react";
 import {fadeInVariants} from "@/utils/motionVariants";
+import basePath from "../../../next.config.mjs";
 
 
 export default function AboutSection() {
@@ -51,7 +52,7 @@ export default function AboutSection() {
                 <div
                     className="col-start-1 row-start-1 lg:col-start-2 lg:row-start-1 z-0 relative w-full h-full min-h-[50svh] lg:min-h-0 lg:h-auto">
                     <Image
-                        src="/resource/crystal-section.webp"
+                        src={`${basePath}/resource/crystal-section.webp`}
                         alt="Crystal Background"
                         fill
                         className="object-cover"
@@ -68,7 +69,7 @@ export default function AboutSection() {
                     <div
                         className="relative w-32 h-32 md:w-48 md:h-48 drop-shadow-xl transition-transform pointer-events-none">
                         <Image
-                            src="/resource/logo.webp"
+                            src={`${basePath}/resource/logo.webp`}
                             alt="Densan Logo"
                             fill
                             className="object-contain invert md:invert-0"

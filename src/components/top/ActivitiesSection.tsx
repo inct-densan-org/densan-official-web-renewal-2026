@@ -6,6 +6,7 @@ import { notoSansJP, orbitron } from "@/utils/fonts";
 import { activitiesData } from "../../../public/config";
 import {motion} from "motion/react";
 import {fadeInVariants} from "@/utils/motionVariants";
+import basePath from "../../../next.config.mjs";
 
 export default function ActivitiesSection() {
     // 全て表示するかどうかの状態管理（初期値は false = 直近2件のみ表示）
@@ -27,7 +28,7 @@ export default function ActivitiesSection() {
             <div className="w-full bg-transparent py-16 md:py-32 flex flex-col items-center justify-center relative px-4 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src={"/resource/activities-banner.webp"}
+                        src={`${basePath}/resource/activities-banner.webp`}
                         alt={"bg"}
                         fill
                         className={"object-cover"}
