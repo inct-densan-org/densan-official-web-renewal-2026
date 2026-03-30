@@ -20,10 +20,10 @@ Node.js (v18以上推奨) がインストールされていることを確認し
 
 ```bash
 # 1. パッケージのインストール
-npm install
+pnpm install
 
 # 2. ローカルサーバーの立ち上げ
-npm run dev
+pnpm run dev
 
 ```
 
@@ -94,7 +94,7 @@ npm run dev
 
 ```bash
 # 静的ファイルのビルド
-npm run build
+pnpm run build
 ```
 
 ビルドが成功すると `out/` ディレクトリに静的ファイル群が生成されます。
