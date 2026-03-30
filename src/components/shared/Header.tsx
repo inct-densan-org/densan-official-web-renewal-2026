@@ -32,7 +32,7 @@ export default function Header() {
     // スクロール状態に応じたクラス名を動的に生成
     const headerBgClass = isScrolled
         ? "fixed top-0 bg-gray-50/30 backdrop-blur-lg shadow-sm transition-none" // 下にスクロールした時 (白・すりガラス)
-        : "absolute top-[25dvh] md:top-[17dvh] bg-transparent "; // ヒーローセクション内 (透明)
+        : "absolute top-[25svh] md:top-[17svh] bg-transparent "; // ヒーローセクション内 (透明)
 
     const textColorClass = isScrolled
         ? "text-primary hover:text-primary/70" // 下にスクロールした時 (青系)

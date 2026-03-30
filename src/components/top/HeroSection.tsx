@@ -131,7 +131,7 @@ function ShaderBackground() {
 export default function HeroSection() {
     return (
         <section className="relative w-full h-[100svh] overflow-hidden">
-            <div className="absolute inset-0 z-0 h-[50dvh]  mt-[25dvh] md:h-[66dvh] md:mt-[17dvh]  drop-shadow-2xl">
+            <div className="absolute inset-0 z-0 h-[50svh]  mt-[25svh] md:h-[66svh] md:mt-[17svh]  drop-shadow-2xl">
                 <Canvas camera={{position: [0, 0, 1], fov: 75}}>
                     <ShaderBackground/>
                 </Canvas>
