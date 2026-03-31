@@ -1,12 +1,13 @@
 "use client"
 import {notoSansJP} from "@/utils/fonts";
 import Link from "next/link";
+import {basePath} from "@/basePath";
 
 export default function Footer() {
     
     const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
-        window.history.pushState(null, "", "/");
+        window.history.pushState(null, "", `/${basePath}`);
         window.scrollTo({top: 0, behavior: "smooth"});
     };
     

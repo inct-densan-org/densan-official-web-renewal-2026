@@ -3,6 +3,7 @@
 import {useEffect, useState} from "react";
 import Link from "next/link";
 import {notoSansJP} from "@/utils/fonts";
+import {basePath} from "@/basePath";
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -30,7 +31,7 @@ export default function Header() {
     const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         closeMenu();
         e.preventDefault();
-        window.history.pushState(null, "", "/");
+        window.history.pushState(null, "", `/${basePath}`);
         window.scrollTo({top: 0, behavior: "smooth"});
     };
 
