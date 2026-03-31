@@ -10,11 +10,12 @@ import {basePath} from "@/basePath";
 export default function AboutSection() {
     return (
         <motion.section
-            id="philosophy" className="w-full mb-64"
+            id="about" className="w-full mb-64 "
             initial="hidden" // 初期状態を設定
             whileInView="visible" // ビューポートに入ったら発火
             viewport={{ once: true, amount: 0.1 }} // 1回だけ、10%見えたら発火
             variants={fadeInVariants} // アニメーション設定を適用
+            
         >
             <div className="grid grid-cols-1 md:grid-cols-2">
 
@@ -22,7 +23,7 @@ export default function AboutSection() {
                 {/* SP: row 1, col 1 (画像1の上に重なる), すりガラス背景 */}
                 {/* PC: row 1, col 1, 白背景 */}
                 <div
-                    className="col-start-1 row-start-1 lg:col-start-1 lg:row-start-1 z-10 flex flex-col justify-center gap-6 text-lg p-10 md:p-16 lg:py-24 lg:px-12 text-primary bg-white/70 backdrop-blur-md lg:bg-white lg:backdrop-blur-none leading-loose">
+                    className="col-start-1 row-start-1 lg:col-start-1 lg:row-start-1 z-10 flex flex-col justify-center gap-6 text-lg p-10 md:p-16 lg:py-24 lg:px-12 text-primary bg-white/80 backdrop-blur-md lg:bg-white lg:backdrop-blur-none leading-loose">
                     <p className={`${notoSerifJP.className} text-primary text-lg `}>Change the world from your
                         fingertips.</p>
                     <h2 className={`${notoSerifJP.className} tracking-[6px] text-4xl font-extrabold text-primary mb-6 drop-shadow-sm md:drop-shadow-none leading-relaxed `}><span
@@ -50,7 +51,7 @@ export default function AboutSection() {
                 {/* SP: row 1, col 1 (テキスト1の下敷きとして背面に配置) */}
                 {/* PC: row 1, col 2 */}
                 <div
-                    className="col-start-1 row-start-1 lg:col-start-2 lg:row-start-1 z-0 relative w-full h-full min-h-[50svh] lg:min-h-0 lg:h-auto">
+                    className="col-start-1 row-start-1 md:col-start-2 md:row-start-1 z-0 relative w-full h-full min-h-[50svh] lg:min-h-0 lg:h-auto">
                     <Image
                         src={`${basePath}/resource/crystal-section.webp`}
                         alt="Crystal Background"

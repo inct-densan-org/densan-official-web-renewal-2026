@@ -1,5 +1,6 @@
-// const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const basePath = "/densan-official-web-renewal-2026";
+// const basePath = "";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */

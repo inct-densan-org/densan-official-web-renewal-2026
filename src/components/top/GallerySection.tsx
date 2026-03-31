@@ -37,13 +37,15 @@ function WorkCard({work}: { work: { id: string; title: string; summary: string, 
             } catch (error) {
                 setSummary("コンテンツの読み込みに失敗しました。");
             }
-
-            try {
-                const res = await fetch(`${basePath}/gallery/${work.id}/${work.content}`);
-                if (!res.ok) throw new Error("Not Found");
-                const text = await res.text();
-                setContent(text);
-            } catch (error) {
+            
+            if (work.content) {
+                try {
+                    const res = await fetch(`${basePath}/gallery/${work.id}/${work.content}`);
+                    if (!res.ok) throw new Error("Not Found");
+                    const text = await res.text();
+                    setContent(text);
+                } catch (error) {
+                }
             }
 
         };
@@ -126,7 +128,8 @@ export default function GallerySection() {
             <div
                 className="w-full bg-transparent py-16 md:py-32 flex flex-col items-center justify-center relative px-4 overflow-hidden">
                 <div className="absolute inset-0 z-0 bg-[#4a6b82]">
-                    <Image src={`${basePath}/resource/gallery-banner.webp`} alt={"bg"} fill className={"object-cover opacity-50"}/>
+                    <Image src={`${basePath}/resource/gallery-banner.webp`} alt={"bg"} fill
+                           className={"object-cover opacity-50"}/>
                 </div>
                 <h2 className={`${notoSansJP.className} text-white text-4xl sm:text-5xl md:text-7xl font-bold tracking-[0.1em] md:tracking-[0.2em] z-10 text-center w-full`}
                     style={{WebkitTextStroke: "2px white", color: "transparent"}}

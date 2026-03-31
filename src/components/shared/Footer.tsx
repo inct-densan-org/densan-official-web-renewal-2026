@@ -1,5 +1,5 @@
-import Link from "next/link";
 import {notoSansJP} from "@/utils/fonts";
+import Link from "next/link";
 
 export default function Footer() {
 
@@ -9,50 +9,50 @@ export default function Footer() {
             className={`${notoSansJP.className} `}
         >
             <div className={"w-full bg-[#a6a6a6] font-extralight text-white flex justify-center py-4 gap-4 underline-offset-4  underline flex-wrap px-12"}>
-                <Link
-                    href="/#philosophy"
+                <a
+                    href="#about"
                     // SP(展開時)は常に青系、PCはスクロール状態に応じて色が変化
                     className={`font-thin tracking-widest`}
                 >
                     About
-                </Link>
+                </a>
 
-                <Link
-                    href="/#groups"
+                <a
+                    href="#groups"
                     className={`font-thin tracking-widest`}
                 >
                     Groups
-                </Link>
+                </a>
 
-                <Link
-                    href="/#activities"
+                <a
+                    href="#activities"
                     className={`font-thin tracking-widest`}
                 >
                     Activities
-                </Link>
+                </a>
 
-                <Link
-                    href="/#gallery"
+                <a
+                    href="#gallery"
                     className={`font-thin tracking-widest`}
                 >
                     Gallery
-                </Link>
-                <Link
+                </a>
+                <a
                     href="https://x.com/inct_densan" target={"_blank"}
                     className={`font-thin tracking-widest`}
                 >
                     X
-                </Link>
+                </a>
 
-                <Link
+                <a
                     href="https://github.com/inct-densan-org" target={"_blank"}
                     className={`font-thin tracking-widest`}
                 >
                     GitHub
-                </Link>
+                </a>
             </div>
             <div className={"w-full bg-[#888888] text-center text-white py-4 "}>
-                <Link href="/"
+                <Link href="/#"
                       className={`font-thin tracking-widest `}>
                     一関高専電算部
                 </Link>

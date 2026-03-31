@@ -30,7 +30,7 @@ export default function GroupsSection() {
             <div
                 className="w-full bg-[#6b8ca5] py-16 md:py-24 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20 mix-blend-overlay">
-                    <Image src={`{${basePath}/resource/crystal-section.webp`} alt="bg" fill className="object-cover"/>
+                    <Image src={`${basePath}/resource/crystal-section.webp`} alt="bg" fill className="object-cover"/>
                 </div>
                 <h2 className={`${notoSansJP.className} text-white text-5xl md:text-7xl font-bold tracking-[0.2em] z-10`}
                     style={{

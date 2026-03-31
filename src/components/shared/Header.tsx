@@ -1,131 +1,129 @@
 "use client"; // スクロール監視(useEffect)を使うために必須
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { notoSansJP } from "@/utils/fonts";
 
 export default function Header() {
-    // スクロール状態を管理するstate (true: スクロールされた状態)
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            // スクロール量が50pxを超えたら isScrolled を true にする
-            // ヒーローセクションの高さに合わせて数値(50)は調整してください
-            if (window.scrollY > 200) {
+            // SPは17svh、PCは25svhでトップに到達するため、その少し手前で背景を切り替える
+            const threshold = window.innerWidth >= 768 ? window.innerHeight * 0.25 : window.innerHeight * 0.17;
+            if (window.scrollY > threshold - 10) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
             }
         };
 
-        // スクロールイベントのリスナーを登録
         window.addEventListener("scroll", handleScroll);
-
-        // 初期描画時にも一度判定を実行
         handleScroll();
 
-        // クリーンアップ関数
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // スクロール状態に応じたクラス名を動的に生成
-    const headerBgClass = isScrolled
-        ? "fixed top-0 bg-gray-50/30 backdrop-blur-lg shadow-sm transition-none" // 下にスクロールした時 (白・すりガラス)
-        : "absolute top-[25svh] md:top-[17svh] bg-transparent "; // ヒーローセクション内 (透明)
+    const closeMenu = () => setIsMenuOpen(false);
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-    const textColorClass = isScrolled
-        ? "text-primary hover:text-primary/70" // 下にスクロールした時 (青系)
-        : "text-white hover:text-white/80 "; // ヒーローセクション内  (白)
+    const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        closeMenu();
+        if (window.location.pathname === "/") {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.history.pushState(null, "", "/");
+        }
+    };
+
+    // --- デザイン(文字色・背景色)の設定 ---
+    const headerBgClass = isScrolled
+        ? "bg-gray-50/30 backdrop-blur-lg shadow-sm"
+        : "bg-transparent";
+
+    // タイトルロゴ: PC/SPともに、最初は白、スクロールで青
+    const titleColorClass = isScrolled
+        ? "text-primary hover:text-primary/70"
+        : "text-white md:text-white hover:text-white/80";
     
+    // SPは白背景のドロワー内に出るため常に青。PCは最初は透明背景に乗るため白、スクロールで青。
+    const textColorClass = isScrolled
+        ? "text-primary hover:text-primary/70"
+        : "text-primary md:text-white hover:text-white/80";
+
+    // ハンバーガーアイコン: 最初は白、スクロールで青
     const menuIconColorClass = isScrolled
         ? "text-primary hover:text-primary/70"
         : "text-white hover:text-white/80";
 
     return (
         <header
-            // classNameに動的に生成した背景クラスを結合
-            className={`${notoSansJP.className}   font-extralight  inset-x-0 z-50 transition-all duration-300 ${headerBgClass}`}
+            // mt-[17svh] 等の配置ロジックは維持
+            className={`${notoSansJP.className} font-extralight h-16 w-full z-50 transition-colors duration-300 sticky top-0 mt-[17svh] md:mt-[25svh] -mb-16 ${headerBgClass}`}
         >
-            <div className="flex items-center justify-between px-4 py-4 max-w-7xl mx-[3vw] md:max-w-full md:mx-[6vw] md:px-8">
+            <div className="flex items-center justify-between h-full px-4 max-w-7xl mx-[1vw] md:max-w-full md:mx-[6vw] md:px-8">
 
-                <div className="z-50">
-                    <Link href="/" className={`text-xl font-extralight tracking-widest transition-colors duration-300 ${textColorClass}`}>
+                <div className={`z-50 relative transition-opacity duration-300 ${isMenuOpen ? "opacity-0 md:opacity-100" : "opacity-100"}`}>
+                    <Link
+                        href="/"
+                        onClick={handleLogoClick}
+                        scroll={false}
+                        className={`text-xl font-extralight tracking-widest transition-colors duration-300 ${titleColorClass}`}
+                    >
                         一関高専電算部
                     </Link>
                 </div>
 
-                {/* 隠しチェックボックス (状態管理の代わり) */}
-                <input type="checkbox" id="menu-toggle" className="hidden peer"/>
-
-                {/* ハンバーガーアイコン (SPでのみ表示) */}
-                <label
-                    htmlFor="menu-toggle"
-                    className={`z-50 block cursor-pointer md:hidden peer-checked:opacity-0 peer-checked:pointer-events-none transition-all duration-300 ${menuIconColorClass}`}
+                <button
+                    onClick={toggleMenu}
+                    className={`z-50 block cursor-pointer md:hidden transition-all duration-300 ${menuIconColorClass} ${isMenuOpen ? "opacity-0 pointer-events-none" : ""}`}
+                    aria-label="メニューを開く"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                         stroke="currentColor" className="w-8 h-8">
+                        <path strokeLinecap="round" strokeLinejoin="round"
+                              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
                     </svg>
-                </label>
+                </button>
 
-                {/* ナビゲーションメニュー (右からのスライドイン) */}
                 <nav
-                    // メニュー展開時の背景はスクロール状態に関わらず白系(bg-gray-50)で固定
-                    className="fixed top-0 right-0 w-full h-screen bg-gray-50 flex flex-col items-center justify-center space-y-8 transform translate-x-full peer-checked:translate-x-0 transition-transform duration-300 ease-in-out md:static md:w-auto md:h-auto md:bg-transparent md:flex-row md:space-y-0 md:space-x-8 md:p-0 md:translate-x-0 md:transition-none z-40"
+                    className={`fixed top-0 right-0 w-full h-screen bg-gray-50 flex flex-col items-center justify-center space-y-8 transform transition-transform duration-300 ease-in-out md:static md:w-auto md:h-full md:bg-transparent md:flex-row md:space-y-0 md:space-x-8 md:p-0 md:transition-none z-40 ${isMenuOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"}`}
                 >
-                    {/* リンクパスと名称を最新のセクション構成に合わせて更新 */}
-
-                    <Link
-                        href="/#philosophy"
-                        // SP(展開時)は常に青系、PCはスクロール状態に応じて色が変化
-                        className={`text-lg font-thin tracking-widest  ${textColorClass} transition-colors duration-300 md:text-sm`}
-                    >
+                    <a href="#about" onClick={closeMenu}
+                       className={`text-lg font-thin tracking-widest ${textColorClass} transition-colors duration-300 md:text-sm`}>
                         About
-                    </Link>
-
-                    <Link
-                        href="/#groups"
-                        className={`text-lg font-thin tracking-widest  ${textColorClass} transition-colors duration-300 md:text-sm`}
-                    >
+                    </a>
+                    <a href="#groups" onClick={closeMenu}
+                       className={`text-lg font-thin tracking-widest ${textColorClass} transition-colors duration-300 md:text-sm`}>
                         Groups
-                    </Link>
-
-                    <Link
-                        href="/#activities"
-                        className={`text-lg font-thin tracking-widest  ${textColorClass} transition-colors duration-300 md:text-sm`}
-                    >
+                    </a>
+                    <a href="#activities" onClick={closeMenu}
+                       className={`text-lg font-thin tracking-widest ${textColorClass} transition-colors duration-300 md:text-sm`}>
                         Activities
-                    </Link>
-
-                    <Link
-                        href="/#gallery"
-                        className={`text-lg font-thin tracking-widest  ${textColorClass} transition-colors duration-300 md:text-sm`}
-                    >
+                    </a>
+                    <a href="#gallery" onClick={closeMenu}
+                       className={`text-lg font-thin tracking-widest ${textColorClass} transition-colors duration-300 md:text-sm`}>
                         Gallery
-                    </Link>
-                    <Link
-                        href="https://x.com/inct_densan" target={"_blank"}
-                        className={`text-lg font-thin tracking-widest  ${textColorClass} transition-colors duration-300 md:text-sm`}
-                    >
+                    </a>
+                    <a href="https://x.com/inct_densan" target="_blank" rel="noopener noreferrer" onClick={closeMenu}
+                       className={`text-lg font-thin tracking-widest ${textColorClass} transition-colors duration-300 md:text-sm`}>
                         X
-                    </Link>
-                    <Link
-                        href="https://github.com/inct-densan-org" target={"_blank"}
-                        className={`text-lg font-thin tracking-widest  ${textColorClass} transition-colors duration-300 md:text-sm`}
-                    >
+                    </a>
+                    <a href="https://github.com/inct-densan-org" target="_blank" rel="noopener noreferrer"
+                       onClick={closeMenu}
+                       className={`text-lg font-thin tracking-widest ${textColorClass} transition-colors duration-300 md:text-sm`}>
                         GitHub
-                    </Link>
+                    </a>
 
-                    {/* SPメニュー表示時に閉じる用のバツ印 */}
-                    <label
-                        htmlFor="menu-toggle"
-                        className="absolute top-4 right-4 cursor-pointer md:hidden text-gray-500 hover:text-primary transition-colors"
-                    >
+                    <button onClick={closeMenu}
+                            className="absolute top-4 right-4 cursor-pointer md:hidden text-gray-500 hover:text-primary transition-colors"
+                            aria-label="メニューを閉じる">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                              stroke="currentColor" className="w-8 h-8">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
-                    </label>
+                    </button>
                 </nav>
 
             </div>
