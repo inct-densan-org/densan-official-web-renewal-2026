@@ -96,29 +96,25 @@ function ShaderBackground() {
 
 export default function HeroSection() {
     return (
-        // セクション全体の高さを「100svh - 上の余白」に設定します。
-        // SP: 100 - 17 = 83svh / PC: 100 - 25 = 75svh
-        <section className="relative w-full h-[83svh] md:h-[75svh] flex flex-col justify-start">
+        <section className="relative w-full h-[100dvh] flex flex-col justify-start">
 
-            {/* 青いキャンバスのラッパー。ここに 66svh / 50svh を指定します */}
-            <div className="relative w-full h-[66svh] md:h-[50svh] drop-shadow-2xl anc">
+            <div className="w-full h-[17svh] md:h-[25svh] shrink-0" />
 
+            <div className="relative w-full h-[66svh] md:h-[50svh] shrink-0 drop-shadow-2xl anc">
                 <div className="absolute inset-0 z-0">
                     <Canvas camera={{position: [0, 0, 1], fov: 75}}>
                         <ShaderBackground/>
                     </Canvas>
                 </div>
 
-                {/* 前面のテキスト/ロゴコンテンツレイヤー */}
                 <div className="relative z-10 w-full h-full px-4 text-center pointer-events-none flex flex-col items-center justify-center">
                     <TitleLogo/>
 
-                    {/* 下スクロールを促すインジケーター（青背景に乗るので白文字にしています） */}
                     <div className="absolute bottom-10 left-1/2 -translate-x-1/2 pointer-events-auto">
                         <Link
                             href="/#about"
                             className="flex items-center justify-center w-12 h-12 text-white hover:text-white/70 transition-colors animate-bounce"
-                            aria-label="下にスクロール"
+                            aria-label="Scroll down"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -133,10 +129,7 @@ export default function HeroSection() {
                         </Link>
                     </div>
                 </div>
-
             </div>
-
-            {/* 余った空間（SP: 83-66=17svh / PC: 75-50=25svh）が自動的に「下の白い余白」として機能します */}
         </section>
     );
 }

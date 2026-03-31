@@ -27,16 +27,18 @@ export default function RootLayout({
     return (
         <html
             lang="ja"
-            className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth scroll-pt-16`}
+            className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth scroll-pt-16 overflow-x-hidden`}
         >
-        <body className="relative min-h-full flex flex-col">
-        <Header/>
-
-        <main className="flex-1">
-            {children}
-        </main>
-
-        <Footer/>
+        <body className="min-h-screen grid grid-cols-1 grid-rows-1">
+        <div className="col-start-1 row-start-1 flex flex-col min-h-screen w-full relative z-0">
+            <main className="flex-1 w-full">
+                {children}
+            </main>
+            <Footer/>
+        </div>
+        <div className="col-start-1 row-start-1 w-full pointer-events-none z-50">
+            <Header/>
+        </div>
         </body>
         </html>
     );
