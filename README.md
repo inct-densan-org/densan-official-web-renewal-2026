@@ -90,6 +90,7 @@ pnpm run dev
    作成したフォルダ内に、紹介文を書いた `summary.md` と、記事内で使用する画像ファイルを配置します。
    *Markdown内での画像指定は、フォルダ名を意識せずファイル名のみでOKです。*
    *ファイルサイズの大きい画像はサイトの読み込み速度を低下させます。 webpなどの軽量なファイル形式に変換することを推奨します。*
+   おすすめツール: [https://saruwakakun.com/tools/png-jpeg-to-webp/](https://saruwakakun.com/tools/png-jpeg-to-webp/)
    ```markdown
    # 作品の紹介
    これはゲームの紹介です。
