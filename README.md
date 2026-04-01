@@ -8,15 +8,19 @@
 ## 電算部HPリポジトリの遷移 (R8/04/01現在)
 
 1. [official-web](https://github.com/inct-densan-org/official-web)
-   ~ 2026/03/31
-   Netlifyで運用.
+   ~ 2026/03/31  
+   Netlifyで運用.  
    [archive](https://densan.netlify.app)
+   
 2. [new-official-web](https://github.com/inct-densan-org/new-official-web)
    (開発中止?)
+   
 3. [official-web-renewal](https://github.com/inct-densan-org/official-web-renewal)
    (開発中止?)
-4. This
-   2026/04/01 ~
+   
+4. This  
+   2026/04/01 ~  
+   GitHub PagesのUser Siteでホスティング.
 
 ## 🛠 技術スタック
 
