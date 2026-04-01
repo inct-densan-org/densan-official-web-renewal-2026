@@ -1,5 +1,5 @@
-const basePath = "/densan-official-web-renewal-2026";
-// const basePath = "";
+// const basePath = "/densan-official-web-renewal-2026";
+const basePath = "";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
