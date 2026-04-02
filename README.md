@@ -6,21 +6,23 @@
 本サイトは **GitHub Pages** への静的エクスポート（Static Export）を前提に設計されており、サーバーサイドの動的処理を持たない構成になっています。
 
 ## 電算部HPリポジトリの遷移 (R8/04/01現在)
-
-1. [official-web](https://github.com/inct-densan-org/official-web)
-   ~ 2026/03/31  
+1. [densanweb_legacy](https://github.com/inct-densan-org/densanweb_legacy)
+    2014/10/24? ~ 2018/09/07?
+2. [official-web](https://github.com/inct-densan-org/official-web)
+    2018/09/07? ~ 2026/03/31  
    Netlifyで運用.  
    [archive](https://densan.netlify.app)
    
-2. [new-official-web](https://github.com/inct-densan-org/new-official-web)
+3. [new-official-web](https://github.com/inct-densan-org/new-official-web)
    (開発中止?)
    
-3. [official-web-renewal](https://github.com/inct-densan-org/official-web-renewal)
+4. [official-web-renewal](https://github.com/inct-densan-org/official-web-renewal)
    (開発中止?)
    
-4. This  
+5. 本リポジトリ  
    2026/04/01 ~  
-   GitHub PagesのUser Siteでホスティング.
+   GitHub PagesのUser Siteでホスティング.  
+   公開された電算部のHPとしては3代目であると推測される。  
 
 ## 🛠 技術スタック
 
