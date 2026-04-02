@@ -36,7 +36,7 @@ export default function Header() {
     };
 
     const headerBgClass = isScrolled
-        ? "bg-gray-50/55 backdrop-blur-lg shadow-sm"
+        ? "bg-gray-50/65 backdrop-blur-lg shadow-sm"
         : "bg-transparent";
 
     const titleColorClass = isScrolled

@@ -111,7 +111,7 @@ export default function HeroSection() {
             <div className="w-full h-[17svh] md:h-[25svh] shrink-0"/>
 
             <div className="relative w-full h-[66svh] md:h-[50svh] shrink-0 drop-shadow-2xl anc">
-                <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 z-0 brightness-90">
                     {/* バックグラウンドのフォールバック画像 */}
                     <Image
                         src={`${basePath}/resource/crystal-top.webp`}
@@ -129,7 +129,7 @@ export default function HeroSection() {
                             antialias: false,
                             depth: false,
                             alpha: true,
-                            powerPreference: "high-performance"
+                            
                         }}
                     >
                         <ShaderBackground onLoaded={() => setIsCanvasLoaded(true)} />
