@@ -120,6 +120,11 @@ export default function AboutSection() {
                         <dd className={"ml-[1em]"}>
                             対面活動時は基本的に4号棟2階の旧CAD室を使用し、必要に応じて専攻科棟1階のコンピューター室なども使用します。
                         </dd>
+                        <dt className={"indent-0 mt-4"}># 入部申請</dt>
+                        <dd className={"ml-[1em]"}>
+                            <p>一関高専生は以下 のフォームから入部の申請ができます。 (MS365アカウントでのログインが必要です。)<br /></p>
+                            <p className={"text-xl text-center underline"}><a href={"https://forms.cloud.microsoft/r/YcbwRvYCnD"}>入部申請フォーム &gt; </a></p>
+                        </dd>
                     </dl>
 
                 </div>
